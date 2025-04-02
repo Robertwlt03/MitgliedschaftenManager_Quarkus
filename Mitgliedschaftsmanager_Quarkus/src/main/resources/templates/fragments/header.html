@@ -1,0 +1,28 @@
+<header class="navbar">
+    <div class="project-name">
+        <h2>Mitgliedschaft-Manager</h2>
+        <a href="https://quarkus.io/" target="_blank" class="framework-name">Quarkus</a>
+    </div>
+
+    <nav class="navbar-links-wrapper">
+        <a href="/mitgliedschaften" {#if page == "homepage"}class="active-link"{/if}>Homepage</a>
+        <a href="/mitgliedschaften/add" {#if page == "add"}class="active-link"{/if}>Hinzufügen</a>
+        {#if page == "edit"}
+            <a href="#" class="active-link">Bearbeiten</a>
+        {/if}
+    </nav>
+
+    <form class="search-form" action="/mitgliedschaften/search" method="get">
+        <div class="greater-search-wrapper">
+            <div class="greater-search-input">
+                <label for="search" hidden></label>
+                <input id="search" type="search" name="keyword" placeholder="Suchen...">
+                <button type="submit" class="clean-btn">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+
+    <button class="menu-toggle"><i class="fa fa-bars"></i></button>
+</header>

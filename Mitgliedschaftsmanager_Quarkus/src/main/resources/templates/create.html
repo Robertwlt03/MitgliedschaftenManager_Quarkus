@@ -1,0 +1,49 @@
+{#include  layout.html}
+    {#body}
+        <div class="card">
+            <p class="form-header"><i class="fa-solid fa-pen-to-square"></i>Mitglied hinzufügen</p>
+
+            <form id="createForm" action="/mitgliedschaften/sql/save" method="post">
+                <input type="hidden" name="eintrittsdatum" value="{mitgliedschaft.eintrittsdatum}"/>
+
+                <div class="input-wrapper">
+                    <label for="vorname">Vorname:</label>
+                    <input required id="vorname" type="text" name="vorname" value="{mitgliedschaft.vorname}"/>
+                </div>
+
+                <div class="input-wrapper">
+                    <label for="nachname">Nachname:</label>
+                    <input required id="nachname" type="text" name="nachname" value="{mitgliedschaft.nachname}"/>
+                </div>
+
+                <div class="input-wrapper">
+                    <label for="email">E-Mail:</label>
+                    <input required id="email" type="text" name="email" value="{mitgliedschaft.email}"/>
+                </div>
+
+                <div class="input-wrapper">
+                    <label for="telefonnummer">Telefonnummer:</label>
+                    <input id="telefonnummer" type="text" name="telefonnummer" value="{mitgliedschaft.telefonnummer}"/>
+                </div>
+
+                <div class="input-wrapper">
+                    <label required for="status">Status:</label>
+                    <select id="status" name="status" class="form-control">
+                        <option value="Testmitgliedschaft">Testmitgliedschaft</option>
+                        <option value="Standard">Standard</option>
+                        <option value="Premium">Premium</option>
+                        <option value="Business">Business</option>
+                    </select>
+                </div>
+
+                <p class="btn-wrapper">
+                    <a href="/mitgliedschaften">
+                        <button type="button" class="btn-cancel-green">Abbrechen</button>
+                    </a>
+
+                    <button type="submit" class="btn-save">Speichern</button>
+                </p>
+            </form>
+        </div>
+    {/body}
+{/include}

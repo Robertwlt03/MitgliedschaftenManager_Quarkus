@@ -1,0 +1,60 @@
+{#include  layout.html}
+
+    {#body}
+        <div class="card-layout">
+            {#if mitgliedschaften.size == 0}
+                <p>Keine Ergebnisse gefunden.</p>
+
+            {#else}
+                {#for mitglied in mitgliedschaften}
+                    <div class="card">
+                        <p class="member-name">{mitglied.vorname} {mitglied.nachname}</p>
+
+                        <div class="member-info-wrapper">
+                            <p class="member-info"><i class="fa-solid fa-fingerprint"></i>
+                                <span class="info-title">ID:</span>
+                                <span>{mitglied.id}</span>
+                            </p>
+
+                            <p class="member-info">
+                                <i class="fa-solid fa-envelope"></i>
+                                <span class="info-title">E-Mail:</span>
+                                <span>{mitglied.email}</span>
+                            </p>
+
+                            <p class="member-info"><i class="fa-solid fa-phone"></i>
+                                <span class="info-title">Telefonnummer:</span>
+                                <span>{#if mitglied.telefonnummer}{mitglied.telefonnummer}{#else}-{/if}</span>
+                            </p>
+
+                            <p class="member-info"><i class="fa-solid fa-calendar"></i>
+                                <span class="info-title">Eintrittsdatum:</span>
+                                <span>{mitglied.eintrittsdatum}</span>
+                            </p>
+
+                            <p class="member-info"><i class="fa-solid fa-calendar"></i>
+                                <span class="info-title">Austrittsdatum:</span>
+                                <span>{#if mitglied.austrittsdatum}{mitglied.austrittsdatum}{#else}-{/if}</span>
+                            </p>
+
+                            <p class="member-info"><i class="fa-solid fa-dollar-sign"></i>
+                                <span class="info-title">Status:</span>
+                                <span>{mitglied.status}</span>
+                            </p>
+                        </div>
+
+                        <p class="btn-wrapper">
+                            <a href="/mitgliedschaften/update/{mitglied.id}">
+                                <button class="btn-edit">Bearbeiten</button>
+                            </a>
+
+                            <button data-name="{mitglied.vorname} {mitglied.nachname}" data-id="{mitglied.id}"
+                                    class="btn-delete open-dialog">Löschen
+                            </button>
+                        </p>
+                    </div>
+                {/for}
+            {/if}
+        </div>
+    {/body}
+{/include}

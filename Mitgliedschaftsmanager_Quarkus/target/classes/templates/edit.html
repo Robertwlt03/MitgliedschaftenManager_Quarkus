@@ -1,0 +1,60 @@
+{#include  layout.html}
+
+    {#body}
+        <div class="card">
+            <p class="form-header"><i class="fa-solid fa-pen-to-square"></i> Mitglied bearbeiten </p>
+
+            <form id="editForm" action="/mitgliedschaften/sql/update" method="post">
+                <input value="{mitgliedschaft.id}" name="id" type="hidden"/>
+
+                <div class="input-wrapper">
+                    <label for="vorname">Vorname:</label>
+                    <input required id="vorname" type="text" name="vorname" value="{mitgliedschaft.vorname}"/>
+                </div>
+
+                <div class="input-wrapper">
+                    <label for="nachname">Nachname:</label>
+                    <input required id="nachname" type="text" name="nachname" value="{mitgliedschaft.nachname}"/>
+                </div>
+
+                <div class="input-wrapper">
+                    <label for="email">E-Mail:</label>
+                    <input required id="email" type="text" name="email" value="{mitgliedschaft.email}"/>
+                </div>
+
+                <div class="input-wrapper">
+                    <label for="telefonnummer">Telefonnummer:</label>
+                    <input id="telefonnummer" type="text" name="telefonnummer" value="{mitgliedschaft.telefonnummer}"/>
+                </div>
+
+                <div class="input-wrapper">
+                    <label for="eintrittsdatum">Eintrittsdatum:</label>
+                    <input required id="eintrittsdatum" type="date" name="eintrittsdatum" value="{mitgliedschaft.eintrittsdatum}"/>
+                </div>
+
+                <div class="input-wrapper">
+                    <label for="austrittsdatum">Austrittsdatum:</label>
+                    <input id="austrittsdatum" type="date" name="austrittsdatum" value="{mitgliedschaft.austrittsdatum}"/>
+                </div>
+
+                <div class="input-wrapper">
+                    <label for="status">Status:</label>
+                    <select required id="status" name="status">
+                        <option value="Testmitgliedschaft" {#if mitgliedschaft.status == 'Testmitgliedschaft'}selected{/if}>Testmitgliedschaft</option>
+                        <option value="Standard" {#if mitgliedschaft.status == 'Standard'}selected{/if}>Standard</option>
+                        <option value="Premium" {#if mitgliedschaft.status == 'Premium'}selected{/if}>Premium</option>
+                        <option value="Business" {#if mitgliedschaft.status == 'Business'}selected{/if}>Business</option>
+                    </select>
+                </div>
+
+                <p class="btn-wrapper">
+                    <a href="/mitgliedschaften">
+                        <button type="button" class="btn-cancel-green">Abbrechen</button>
+                    </a>
+
+                    <button type="submit" class="btn-save">Speichern</button>
+                </p>
+            </form>
+        </div>
+    {/body}
+{/include}
